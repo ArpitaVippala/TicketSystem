@@ -13,7 +13,7 @@ class Login extends Model
         // echo $email;
         $res = DB::table('login')
             ->select('*')
-            ->where('userEmail', $email)->get();
+            ->where(array('userEmail'=>$email, 'userPwd'=>$pwd))->get();
             return $res;
         if(!empty($res)){
             return $res;

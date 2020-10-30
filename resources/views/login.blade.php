@@ -31,7 +31,11 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Login to start your session</p>
-
+      @if(session()->has('message'))
+          <div class="alert alert-danger" role="alert">
+            {!! session()->get('message') !!}
+          </div>
+        @endif
       <form action="{{asset('/loginUser')}}" method="post" id="loginForm">
         {{ csrf_field() }}
         <div class="mb-3">

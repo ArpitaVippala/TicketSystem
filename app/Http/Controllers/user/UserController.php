@@ -24,10 +24,12 @@ class UserController extends Controller
         //$user = LoginModel::checkLogin($req);
         if(!empty($req->all())) {            
             $user = Login::checkLogin($req->email, $req->pwd);
-            if(!empty($user)){
+            if(!empty($user[0])){
                 // print_r($user);die();
                 Session::put('user', ['userId'=>$user[0]->userId, 'userName'=>$user[0]->userName, 'userEmail'=>$user[0]->userEmail]);
                 return redirect()->route('Tickets');
+            }else{
+                return redirect()->back()->with('message', 'Invalid Credentials');
             }
         }
     }    
