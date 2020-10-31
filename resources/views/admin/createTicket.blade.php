@@ -57,6 +57,11 @@
             {!! session()->get('msg') !!}
           </div>
           @endif
+          @if(session()->has('error'))
+          <div class="alert alert-danger" role="alert">
+            {!! session()->get('error') !!}
+          </div>
+          @endif
             <!-- general form elements -->
             <div class="card card-primary">
               <!-- /.card-header -->
@@ -66,11 +71,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ session('user')['userName'] }}">
+                    <input type="text" readonly class="form-control" id="name" name="name" value="{{ session('user')['userName'] }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{ session('user')['userEmail'] }}">
+                    <input type="text" readonly class="form-control" id="email" name="email" value="{{ session('user')['userEmail'] }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Department</label>
@@ -78,7 +83,8 @@
                       <option value=""> -- Select Department --</option>
                       @if(!empty($depts))
                         @foreach($depts as $dept)
-                          <option value="{{ $dept->deptId }}">{{ $dept->deptName }}</option>
+                          
+                          <option value="{{ $dept->id }}">{{ $dept->name }}</option>
                         @endforeach
                       @endif
                     </select>
@@ -89,7 +95,7 @@
                       <option value=""> -- Select Category --</option>
                       @if(!empty($cats))
                         @foreach($cats as $cat)
-                          <option value="{{ $cat->catId }}">{{ $cat->catName }}</option>
+                          <option value="{{ $cat->catName }}">{{ $cat->catName }}</option>
                         @endforeach
                       @endif
                     </select>
@@ -107,9 +113,9 @@
                     <label for="exampleInputPassword1">Priority</label>
                     <select class="form-control" id="priority" name="priority" >
                       <option value=""> -- Select Priority --</option>
-                      <option value="1">High</option>
-                      <option value="2">Medium</option>
-                      <option value="3">Low</option>
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
                     </select>
                   </div>
                 </div>

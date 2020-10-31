@@ -48,25 +48,22 @@
                     <th>Ticket ID</th>
                     <th>Category</th>
                     <th>Subject</th>
-                    <th>Description</th>
                     <th>Status</th>
                   </tr>
                   </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Support</td>
-                        <td>Clock-In not working</td>
-                        <td>Clock-In not working</td>
-                        <td>Pending</td>
+                    @if(!empty($tickets))
+                      @foreach($tickets as $ticket)
+                      <tr>
+                        <td>{{ $ticket->id }}</td>
+                        <td>{{ $ticket->category }}</td>
+                        <td>{{ $ticket->subject }}</td>
+                        <td>{{ $ticket->status }}</td>
+                        
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Service</td>
-                        <td>API Services</td>
-                        <td>API Services need to complete</td>
-                        <td>Inprogress</td>
-                    </tr>
+                      @endforeach
+                    @endif
+                    
                   </tbody>
                 </table>
               </div>
