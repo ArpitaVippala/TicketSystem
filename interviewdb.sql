@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 12:12 PM
+-- Generation Time: Oct 31, 2020 at 04:41 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -72,8 +72,10 @@ INSERT INTO `departments` (`deptId`, `deptName`, `createdDate`) VALUES
 CREATE TABLE `login` (
   `userId` int(11) NOT NULL,
   `userName` varchar(50) NOT NULL,
+  `userLastName` varchar(100) NOT NULL,
   `userEmail` varchar(100) NOT NULL,
   `userPwd` varchar(20) NOT NULL,
+  `contactId` varchar(200) NOT NULL,
   `createdDateTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -81,9 +83,10 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`userId`, `userName`, `userEmail`, `userPwd`, `createdDateTime`) VALUES
-(1, 'User1', 'user1@gmail.com', '12345', '2020-10-29'),
-(2, 'User2', 'user2@gmail.com', '12345', '2020-10-29');
+INSERT INTO `login` (`userId`, `userName`, `userLastName`, `userEmail`, `userPwd`, `contactId`, `createdDateTime`) VALUES
+(1, 'User1', 'user1', 'user1@gmail.com', '12345', '7189000002900009', '2020-10-29'),
+(2, 'User2', 'user2', 'user2@gmail.com', '12345', '7189000002907001', '2020-10-29'),
+(3, 'User3', 'user3', 'user3@gmail.com', '12345', '7189000002904077', '2020-10-30');
 
 --
 -- Indexes for dumped tables
@@ -106,6 +109,16 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`userId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
